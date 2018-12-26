@@ -1,0 +1,30 @@
+'''
+从相应的地址里面复制 数据 变成一个字符串
+'''
+def str_getfile(addr):
+    with open(addr, 'r') as f:
+        content = f.read()
+        list = content.split('\n')
+        list.pop()#删除最后一个换行符，造成的元素为空的List
+        return list
+'''生成 字母：字母出现次数 的字典'''
+def dict_letter_from_str(str) :
+    l_dict={ x:str.count(x) for x in str}
+    return l_dict
+    
+#存储puzzle的文件的地址
+str_arr=str_getfile(r'D:\学习\Chrismas25days\day2\01\nums.txt')
+ls=[]
+for x in str_arr:
+    ls.append(dict_letter_from_str(x))
+num_2=0
+num_3=0
+for y in ls:
+    for k,v in y.items():
+        if v==2:
+            num_2+=1
+        if v==3:
+            num_3+=1
+
+print('num2:',num_2,'num3:',num_3)
+print(num_3*num_2)
