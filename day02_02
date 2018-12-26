@@ -1,0 +1,32 @@
+'''
+从相应的地址里面复制 数据 变成一个字符串
+'''
+def str_getfile(addr):
+    with open(addr, 'r') as f:
+        content = f.read()
+        list = content.split('\n')
+        list.pop()#删除最后一个换行符，造成的元素为空的List
+        return list
+
+#等长字符串比较,统计不同的字符数
+def cmp_count_from_str(str,str1):
+    flag=0
+    for i,x in enumerate(str):
+        if ord(x)-ord(str1[i]) != 0:
+            flag+=1
+    return flag
+
+#获取相同的字符串
+def getletter_differ_one(str,str1):
+    txt=''
+    for i, x in enumerate(str):
+        if ord(x) - ord(str1[i]) == 0:
+            txt+=x
+    return txt
+
+str_arr=str_getfile(r'D:\学习\Chrismas25days\day2\02\nums.txt')
+for i,x in enumerate(str_arr):
+    for t in range(i):
+        if cmp_count_from_str( str_arr[t],x) == 1:
+            print('str1',str_arr[t],'str2',x)
+            print(getletter_differ_one(str_arr[t],x))
