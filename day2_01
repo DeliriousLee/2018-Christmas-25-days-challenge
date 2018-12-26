@@ -11,8 +11,7 @@ def str_getfile(addr):
 def dict_letter_from_str(str) :
     l_dict={ x:str.count(x) for x in str}
     return l_dict
-    
-#存储puzzle的文件的地址
+
 str_arr=str_getfile(r'D:\学习\Chrismas25days\day2\01\nums.txt')
 ls=[]
 for x in str_arr:
@@ -20,11 +19,16 @@ for x in str_arr:
 num_2=0
 num_3=0
 for y in ls:
+    flag_2=0
+    flag_3=0
     for k,v in y.items():
         if v==2:
-            num_2+=1
+            flag_2+=1
         if v==3:
-            num_3+=1
-
-print('num2:',num_2,'num3:',num_3)
+            flag_3+=1
+    if flag_2>=1:
+        num_2+=1
+    if flag_3>=1:
+        num_3+=1
 print(num_3*num_2)
+print('num2:',num_2,'num3:',num_3)
